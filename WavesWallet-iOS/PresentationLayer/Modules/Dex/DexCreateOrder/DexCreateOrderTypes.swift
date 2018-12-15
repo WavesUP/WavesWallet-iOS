@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Base58
 
 private enum Constansts {
     static let orderFee = 300000

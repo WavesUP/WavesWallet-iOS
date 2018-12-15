@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import SwiftyJSON
-
+import Base58
 
 fileprivate extension DexMyOrders.DTO.Order {
     

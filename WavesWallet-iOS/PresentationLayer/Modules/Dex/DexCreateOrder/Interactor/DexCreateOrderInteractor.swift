@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Base58
 
 final class DexCreateOrderInteractor: DexCreateOrderInteractorProtocol {
     

@@ -2,7 +2,7 @@ PODS:
   - 25519 (2.0.2)
   - Alamofire (4.8.0)
   - AppsFlyerFramework (4.8.10)
-  - base58 (0.1)
+  - Base58 (0.1)
   - blake2 (0.1)
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
@@ -162,8 +162,8 @@ PODS:
 DEPENDENCIES:
   - "25519 (from `git@github.com:wavesplatform/25519.git`)"
   - AppsFlyerFramework
-  - base58 (from `Vendors/Base58`)
-  - blake2 (from `Vendors/Blake2`)
+  - "Base58 (from `git@github.com:wavesplatform/Base58.git`)"
+  - "blake2 (from `git@github.com:wavesplatform/Blake2.git`)"
   - Charts
   - Crashlytics
   - CryptoSwift
@@ -177,7 +177,7 @@ DEPENDENCIES:
   - "IdentityImg (from `git@github.com:wavesplatform/identity-img-swift.git`)"
   - "InfiniteCollectionView (from `git@github.com:wavesplatform/InfiniteCollectionView.git`)"
   - IQKeyboardManagerSwift
-  - keccak (from `Vendors/Keccak`)
+  - "keccak (from `git@github.com:wavesplatform/Keccak.git`)"
   - KeychainAccess
   - Kingfisher
   - Koloda
@@ -273,10 +273,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   '25519':
     :git: "git@github.com:wavesplatform/25519.git"
-  base58:
-    :path: Vendors/Base58
+  Base58:
+    :git: "git@github.com:wavesplatform/Base58.git"
   blake2:
-    :path: Vendors/Blake2
+    :git: "git@github.com:wavesplatform/Blake2.git"
   Device.swift:
     :branch: swift-4.2
     :git: https://github.com/schickling/Device.swift.git
@@ -285,7 +285,7 @@ EXTERNAL SOURCES:
   InfiniteCollectionView:
     :git: "git@github.com:wavesplatform/InfiniteCollectionView.git"
   keccak:
-    :path: Vendors/Keccak
+    :git: "git@github.com:wavesplatform/Keccak.git"
   RESideMenu:
     :git: https://github.com/wavesplatform/RESideMenu.git
 
@@ -293,6 +293,12 @@ CHECKOUT OPTIONS:
   '25519':
     :commit: b7eb7b9b951d0503669c991af371a27fdefa28ee
     :git: "git@github.com:wavesplatform/25519.git"
+  Base58:
+    :commit: eaed7a6c22ec82e3a5592cb195cb6d6869dd4fc9
+    :git: "git@github.com:wavesplatform/Base58.git"
+  blake2:
+    :commit: b925849da7fda6e1bb8ef243332bf3019322992c
+    :git: "git@github.com:wavesplatform/Blake2.git"
   Device.swift:
     :commit: fa70c4a09b3f41a58ca82140a0aca168faccb628
     :git: https://github.com/schickling/Device.swift.git
@@ -302,6 +308,9 @@ CHECKOUT OPTIONS:
   InfiniteCollectionView:
     :commit: 0168a154821a80611dda2f524da143e3392328d6
     :git: "git@github.com:wavesplatform/InfiniteCollectionView.git"
+  keccak:
+    :commit: ae9ab87c4ec4cc2b812e44901b9e96a5aa11226d
+    :git: "git@github.com:wavesplatform/Keccak.git"
   RESideMenu:
     :commit: c4870be8caf988b3c164bbf5675a717a905e9952
     :git: https://github.com/wavesplatform/RESideMenu.git
@@ -310,8 +319,8 @@ SPEC CHECKSUMS:
   '25519': 2c284bd04dc489ee6c3ad5f04339480a5bcae042
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AppsFlyerFramework: 481eafa4f92e3274fa8d04f10108cdad83fd532b
-  base58: b3862511216d07dbb10ec85f08902f51b674462f
-  blake2: b767add912ed9f7ded789bf257d3c6081ed10ec0
+  Base58: 69314c7bfc355e4ec3033c838e5569603f43f5a0
+  blake2: 44673ebf5df0a6e5d7423f4b327319513c218e7b
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
@@ -333,7 +342,7 @@ SPEC CHECKSUMS:
   IdentityImg: ada114256228c58b82b9eadfe30863aa5908e74f
   InfiniteCollectionView: 49a7639a04c7cb21164de3840245f084fda257d0
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
-  keccak: a73c028b7a5ec094d1c827398ae33618aa8cb19d
+  keccak: 00e58598ccb9fd2bbda8a3250c02a8ac788401f4
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Koloda: fc08984dc013b4d5aff3bd7265a8874e6784b5ef
@@ -373,6 +382,6 @@ SPEC CHECKSUMS:
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 7edf7d8f8835daef5faf5c996470160e5a405e2a
+PODFILE CHECKSUM: b870723e9113841a827a9fd6fb8395f1dedc377e
 
 COCOAPODS: 1.5.3

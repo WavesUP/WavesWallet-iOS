@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import SwiftyJSON
 import Alamofire
+import Base58
 
 private enum Constasts {
     static let aliasApi = "/v0/aliases/"

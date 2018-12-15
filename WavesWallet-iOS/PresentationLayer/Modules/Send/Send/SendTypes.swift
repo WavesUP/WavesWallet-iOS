@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Base58
 
 enum Send {
     enum DTO {}
