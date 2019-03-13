@@ -11,9 +11,11 @@ import UIKit
 
 final class TransactionCardMassSentRecipientCell: UITableViewCell, Reusable {
 
-    private enum Info {
-        case balance(BalanceLabel.Model)
-        case label(String)
+    struct Model {
+        let title: String
+        let contactDetail: ContactDetailView.Model
+        let balance: BalanceLabel.Model?
+        let isEditName: Bool
     }
 
     @IBOutlet private var contactDetailView: ContactDetailView!
@@ -26,23 +28,6 @@ final class TransactionCardMassSentRecipientCell: UITableViewCell, Reusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        //TODO: Remove
-        let money = Money(100334, 3)
-
-        let balance = Balance.init(currency: Balance.Currency.init(title: "Waves",
-                                                                   ticker: "Waves Log"),
-                                   money: money)
-        balanceLabel.update(with: BalanceLabel.Model.init(balance: balance,
-                                                          sign: .plus,
-                                                          style: .small))
-
-        contactDetailView.update(with: .init(title: "Rec kaey",
-                                             address:. init(address: "asdas dasda23e 234 2",
-                                                        contact: nil,
-                                isMyAccount: false,
-                                aliases: [])))
-
     }
 
     //TODO: Copy button
@@ -59,9 +44,8 @@ final class TransactionCardMassSentRecipientCell: UITableViewCell, Reusable {
 
 extension TransactionCardMassSentRecipientCell: ViewConfiguration {
 
-    func update(with model: DomainLayer.DTO.SmartTransaction) {
+    func update(with model: Model) {
 
-//        transactionImageView.update(with: model.kind)
-        //TODO: Mapping
+//        balanceLabel.update/
     }
 }
