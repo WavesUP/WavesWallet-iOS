@@ -30,22 +30,33 @@ final class TransactionCardSystem: System<TransactionCard.State, TransactionCard
                      core: nil)
     }
 
-    override func internalFeedbacks() -> [Feedback] {
-        return []
-    }
+// Incoming Leasing
+//        let section = Types.Section(rows: [.general,
+//                                           .dashedLine(.bottomPadding),
+//                                           .description,
+//                                           .keyValue,
+//                                           .keyValue,
+//                                           .keyBalance,
+//                                           .status,
+//                                           .dashedLine(.topPadding),
+//                                           .actions
+//            ])
 
-    override func reduce(event: Event, state: inout State) {
+// Mass Sent
+//        let section = Types.Section(rows: [.general,
+//                                           .dashedLine(.bottomPadding),
+//                                           .massSentRecipient,
+//                                           .massSentRecipient,
+//                                           .showAll,
+//                                           .keyValue,
+//                                           .keyValue,
+//                                           .keyBalance,
+//                                           .status,
+//                                           .dashedLine(.topPadding),
+//                                           .actions
+//            ])
 
-        switch event {
-        case .viewDidAppear:
-            break
 
-        default:
-            break
-        }
-    }
-    
-}
 
 fileprivate extension DomainLayer.DTO.SmartTransaction {
 
