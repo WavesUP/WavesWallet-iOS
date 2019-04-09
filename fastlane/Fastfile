@@ -4,6 +4,7 @@ require 'dotenv/load'
 require 'dotenv'
 require 'json'
 require 'uri'
+require 'ruby-lokalise-api'
 
 default_platform(:ios)
 
@@ -15,14 +16,11 @@ end
 before_all do
   Dotenv.overload '.env'
   setup_circle_ci  
-
-  ENV['CI_INIT']="true"
-
-  sh("security find-identity -v -p codesigning fastlane_tmp_keychain")
   
-  sh("security find-identity -v -p codesigning fastlane_tmp_keychain")  
+  sh("security find-identity -v -p codesigning fastlane_tmp_keychain")    
   sh("ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts")
 
+  ENV['CI_INIT']="true"
   ENV['ROOT_PROJECT']= "#{Dir.pwd}/.."
   ENV['OUTPUT_PROJECT']= "#{Dir.pwd}/../Output"
 
@@ -268,7 +266,7 @@ platform :ios do
   end
 
 
-  lane :send_to_slack_artifacts  do
+  lane :send_to_slack_artifacts do
       
     URL_ARTIFACTS = "https://circleci.com/api/v1.1/project/github/wavesplatform/WavesWallet-iOS/#{ENV['CIRCLE_BUILD_NUM']}/artifacts?circle-token=#{ENV['CIRCLE_CI_TOKEN']}"
 
@@ -314,8 +312,26 @@ platform :ios do
         success: false
      )
     end
+  end
 
+  lane :export_language do
+    client = Lokalise.client '3ffba358636086e35054412e37db76d933cfe3b5'
 
+    projects = client.projects.collection
+
+    projects.each { |project|
+
+      puts(project.name)
+      puts(project.project_id)
+    }
+
+    project = client.project(project_id: '403224745cac6ebc26cdf9.67602249')
+
+    puts(project.name)
+    # project.name
+    # project.description
+    # project.created_by
+    # puts(project)
   end
 
   # lane :init_project do 

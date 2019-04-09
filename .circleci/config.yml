@@ -14,6 +14,8 @@ jobs:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: waves_test
     shell: /bin/bash --login -eo pipefail
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -80,6 +82,8 @@ jobs:
       BUNDLER_VERSION: 2.0.1
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: waves_test
+     docker:
+      - image: circleci/ruby:2.4.2-jessie-node
     shell: /bin/bash --login -eo pipefail
     steps:
       - add_ssh_keys:
@@ -151,6 +155,8 @@ jobs:
       BUNDLER_VERSION: 2.0.1
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: waves_test
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
     shell: /bin/bash --login -eo pipefail
     steps:
       - add_ssh_keys:
