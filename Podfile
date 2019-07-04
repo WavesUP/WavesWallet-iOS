@@ -1,6 +1,8 @@
 source 'https://github.com/wavesplatform/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
+plugin 'cocoapods-binary'
+
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
 
@@ -9,23 +11,16 @@ inhibit_all_warnings!
 
 install! 'cocoapods', :disable_input_output_paths => true
 
+# enable_bitcode_for_prebuilt_frameworks!
+
 use_frameworks!(true)
-
-# Enable the stricter search paths and module map generation for all pods
-# use_modular_headers!
-
-# Pods for MonkeyTest
-target 'MonkeyTest' do
-    pod 'SwiftMonkey'
-end 
-
+all_binary!
 
 def wavesSDKPod
-    pod 'WavesSDKExtension', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop'
-    pod 'WavesSDK', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop'
-    pod 'WavesSDKCrypto', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop'
+    pod 'WavesSDKExtension', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop', :binary => false
+    pod 'WavesSDK', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop', :binary => false
+    pod 'WavesSDKCrypto', :git => 'https://github.com/wavesplatform/WavesSDK-iOS.git', :branch => 'develop', :binary => false
 end
-
 
 # Pods for WavesWallet-iOS
 target 'WavesWallet-iOS' do
@@ -65,13 +60,15 @@ target 'WavesWallet-iOS' do
     pod 'SwiftDate'
     pod 'Kingfisher'
 
+    
+    # Waves Internal
+    pod 'DomainLayer', :path => '.', :binary => false
+    pod 'DataLayer', :path => '.', :binary => false
+    pod 'Extensions', :path => '.', :binary => false
+
     # Waves
     wavesSDKPod
 
-    # Waves Internal
-    pod 'DomainLayer', :path => '.'
-    pod 'DataLayer', :path => '.'
-    pod 'Extensions', :path => '.'
  
     # Code Gen
     pod 'SwiftGen', '~> 5.3.0'
@@ -84,17 +81,22 @@ target 'WavesWallet-iOS' do
     # pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
 end
 
+# Pods for MonkeyTest
+target 'MonkeyTest' do
+    pod 'SwiftMonkey'
+end 
+
 
 target 'DomainLayerTests' do
 
     inherit! :search_paths
-    pod 'DomainLayer', :path => '.'    
+    pod 'DomainLayer', :path => '.', :binary => false    
 end
 
 target 'DataLayerTests' do
 
     inherit! :search_paths
-    pod 'DataLayer', :path => '.'    
+    pod 'DataLayer', :path => '.', :binary => false
 end
 
 target 'InternalDomainLayer' do
@@ -110,12 +112,11 @@ target 'InternalDomainLayer' do
     pod 'RxSwiftExt'
     pod 'RxOptional'        
     pod 'RxReachability'
-
     pod 'KeychainAccess'        
 
     # Waves    
     wavesSDKPod
-    pod 'Extensions', :path => '.'   
+    pod 'Extensions', :path => '.', :binary => false
 end
 
 target 'InternalExtensions' do
@@ -161,8 +162,8 @@ target 'InternalDataLayer' do
 
     # Waves
     wavesSDKPod
-    pod 'Extensions', :path => '.'   
-    pod 'DataLayer', :path => '.'   
+    pod 'Extensions', :path => '.', :binary => false   
+    pod 'DataLayer', :path => '.', :binary => false   
 
 end
 
