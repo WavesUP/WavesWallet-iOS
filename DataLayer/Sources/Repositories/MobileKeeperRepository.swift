@@ -113,8 +113,36 @@ public class MobileKeeperRepository: MobileKeeperRepositoryProtocol {
     //TODO: Method For Wallet.
     public func decodableRequest(_ url: URL, sourceApplication: String) -> Observable<DomainLayer.DTO.MobileKeeper.Request?> {
         
+        if let dataRequest = url.request {
+            
+            var tx: TransactionSenderSpecifications?
+            
+            switch dataRequest.transaction {
+            case .transfer(let model):
+                tx = .send(.init(recipient: model.recipient,
+                                 assetId: model.assetId,
+                                 amount: model.amount,
+                                 fee: model.fee,
+                                 attachment: model.attachment,
+                                 feeAssetID: model.feeAssetId,
+                                 chainId: model.chainId,
+                                 timestamp: Date()))
+                
+            default:
+                break
+            }
+            
+            if let tx = tx {
+                let request = DomainLayer.DTO.MobileKeeper.Request.init(dApp: .init(name: dataRequest.dApp.name,
+                                                                                    iconUrl: dataRequest.dApp.iconUrl,
+                                                                                    scheme: dataRequest.dApp.schemeUrl),
+                                                                        action: dataRequest.action == .send ? .send : .sign,
+                                                                        transaction: tx)
+            }
+
+        }
         
-        let request = DomainLayer.DTO.MobileKeeper.Request.init(dApp: .init(name: "AppCon",
+       let request = DomainLayer.DTO.MobileKeeper.Request.init(dApp: .init(name: "AppCon",
                                                                             iconUrl: "",
                                                                             scheme: "AplicationMega"),
                                                                 action: .send,
